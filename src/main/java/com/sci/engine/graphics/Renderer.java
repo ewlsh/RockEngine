@@ -107,6 +107,21 @@ public final class Renderer
 	}
 
 	/**
+	 * Sets a pixel to the specified color
+	 * 
+	 * @param the
+	 *            x ordinate of the pixel
+	 * @param the
+	 *            y ordinate of the pixel
+	 * @param the
+	 *            {@link Color} to set the pixel to
+	 */
+	public void setPixel(int x, int y, Color color)
+	{
+		this.pixels[x + y * this.width] = color.getColor();
+	}
+
+	/**
 	 * Copies the renderer pixels to the renderer image pixels
 	 */
 	public void copy()
