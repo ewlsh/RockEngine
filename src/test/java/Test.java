@@ -49,7 +49,7 @@ public class Test extends SciGame
 	public void render(Renderer renderer)
 	{
 		System.out.println(this.getFPS());
-		
+
 		renderer.render(this.x, this.y, this.testTexture);
 		renderer.fillRect(100, 50, 10, 10, Color.RED);
 	}
@@ -62,6 +62,6 @@ public class Test extends SciGame
 
 	public static void main(String[] args)
 	{
-		new Test(new JFrameDisplay("Test", 800, 600)).start();
+		 new Test(new JFrameDisplay("Test", 800, 600)).start();
 	}
 }

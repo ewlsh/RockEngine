@@ -111,7 +111,8 @@ public final class Renderer
 	 */
 	public void copy()
 	{
-		System.arraycopy(this.pixels, 0, this.imagePixels, 0, this.pixels.length);
+		for(int i = 0; i < this.pixels.length; i++)
+			this.imagePixels[i] = this.pixels[i];
 	}
 
 	/**
