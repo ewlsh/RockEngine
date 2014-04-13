@@ -101,6 +101,8 @@ public abstract class SciGame implements Runnable
 			int frames = 0;
 			long timer = System.currentTimeMillis();
 
+			this.init();
+			
 			while(this.running)
 			{
 				long now = System.nanoTime();
@@ -129,6 +131,8 @@ public abstract class SciGame implements Runnable
 					frames = 0;
 				}
 			}
+			
+			this.shutdown();
 		}
 	}
 

@@ -2,6 +2,7 @@ import com.sci.engine.SciGame;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
+import com.sci.engine.graphics.Texture;
 
 /**
  * SciEngine
@@ -12,6 +13,8 @@ import com.sci.engine.graphics.Renderer;
 
 public class Test extends SciGame
 {
+	private Texture testTexture;
+
 	public Test(Display display)
 	{
 		super(display);
@@ -20,7 +23,7 @@ public class Test extends SciGame
 	@Override
 	public void init()
 	{
-
+		this.testTexture = Texture.load(Test.class.getResourceAsStream("test.png"));
 	}
 
 	@Override
@@ -32,7 +35,7 @@ public class Test extends SciGame
 	@Override
 	public void render(Renderer renderer)
 	{
-
+		renderer.render(10, 10, this.testTexture);
 	}
 
 	@Override
