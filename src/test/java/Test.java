@@ -1,5 +1,6 @@
 import java.awt.event.KeyEvent;
 import com.sci.engine.SciGame;
+import com.sci.engine.graphics.Color;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
@@ -48,6 +49,8 @@ public class Test extends SciGame
 	public void render(Renderer renderer)
 	{
 		renderer.render(this.x, this.y, this.testTexture);
+
+		renderer.fillRect(100, 50, 10, 10, Color.RED);
 	}
 
 	@Override

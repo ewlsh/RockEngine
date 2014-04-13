@@ -63,14 +63,10 @@ public final class Renderer
 	 */
 	public void fillRect(int x, int y, int width, int height, Color color)
 	{
-		for(int i = 0; i < width; i++)
+		for(int j = 0; j < height; j++)
 		{
-			for(int j = 0; j < height; j++)
-			{
-				int xx = x + i;
-				int yy = y + j;
-				this.pixels[xx + yy * this.width] = color.getColor();
-			}
+			int start = x + (j + y) * this.width;
+			Arrays.fill(this.pixels, start, start + width, color.getColor());
 		}
 	}
 
