@@ -102,7 +102,7 @@ public abstract class SciGame implements Runnable
 			long timer = System.currentTimeMillis();
 
 			this.init();
-			
+
 			while(this.running)
 			{
 				long now = System.nanoTime();
@@ -111,6 +111,8 @@ public abstract class SciGame implements Runnable
 
 				while(delta >= 1)
 				{
+					for(Updatable u : this.updatables)
+						u.update();
 					this.update();
 					delta--;
 					ticks++;
@@ -131,7 +133,7 @@ public abstract class SciGame implements Runnable
 					frames = 0;
 				}
 			}
-			
+
 			this.shutdown();
 		}
 	}
