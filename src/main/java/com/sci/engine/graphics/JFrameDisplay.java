@@ -86,8 +86,7 @@ public final class JFrameDisplay extends Display
 			this.canvas.createBufferStrategy(3);
 			this.bufferStrategy = this.canvas.getBufferStrategy();
 		}
-		if(this.graphics == null)
-			this.graphics = this.bufferStrategy.getDrawGraphics();
+		this.graphics = this.bufferStrategy.getDrawGraphics();
 		return this.graphics;
 	}
 

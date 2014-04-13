@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 public final class Keyboard
 {
 	private static boolean[] keys = new boolean[65566];
-	
 	private static KeyAdapter adapter = new KeyAdapter()
 	{
 		@Override

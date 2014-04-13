@@ -1,5 +1,6 @@
 package com.sci.engine;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.Renderer;
@@ -47,6 +48,7 @@ public abstract class SciGame implements Runnable
 			}
 		});
 		this.setTargetTPS(100);
+		this.updatables = new ArrayList<Updatable>();
 	}
 
 	/**
@@ -118,6 +120,7 @@ public abstract class SciGame implements Runnable
 					ticks++;
 				}
 
+				this.renderer.clear();
 				this.render(this.renderer);
 				this.renderer.copy();
 				this.display.getDrawGraphics().drawImage(this.renderer.getImage(), 0, 0, null);

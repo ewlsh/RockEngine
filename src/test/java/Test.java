@@ -34,22 +34,23 @@ public class Test extends SciGame
 	@Override
 	public void update()
 	{
-		if(Keyboard.isKeyDown(KeyEvent.VK_UP))
+		if(Keyboard.isKeyDown(KeyEvent.VK_W))
 			this.y--;
-		else if(Keyboard.isKeyDown(KeyEvent.VK_DOWN))
+		else if(Keyboard.isKeyDown(KeyEvent.VK_S))
 			this.y++;
 
-		if(Keyboard.isKeyDown(KeyEvent.VK_LEFT))
+		if(Keyboard.isKeyDown(KeyEvent.VK_A))
 			this.x--;
-		else if(Keyboard.isKeyDown(KeyEvent.VK_RIGHT))
+		else if(Keyboard.isKeyDown(KeyEvent.VK_D))
 			this.x++;
 	}
 
 	@Override
 	public void render(Renderer renderer)
 	{
+		System.out.println(this.getFPS());
+		
 		renderer.render(this.x, this.y, this.testTexture);
-
 		renderer.fillRect(100, 50, 10, 10, Color.RED);
 	}
 
