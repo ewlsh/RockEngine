@@ -117,10 +117,10 @@ public abstract class SciGame implements Runnable
 				}
 
 				this.render(this.renderer);
-				frames++;
 				this.renderer.copy();
 				this.display.getDrawGraphics().drawImage(this.renderer.getImage(), 0, 0, null);
 				this.display.show();
+				frames++;
 
 				if(System.currentTimeMillis() - timer > 1000)
 				{

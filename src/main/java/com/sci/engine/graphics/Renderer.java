@@ -2,6 +2,7 @@ package com.sci.engine.graphics;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Arrays;
 import com.sci.engine.interfaces.Renderable;
 
 /**
@@ -26,6 +27,7 @@ public final class Renderer
 		this.pixels = new int[this.width * this.height];
 		this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
 		this.imagePixels = ((DataBufferInt) this.image.getRaster().getDataBuffer()).getData();
+		this.image.setAccelerationPriority(1f);
 	}
 
 	/**
@@ -43,8 +45,7 @@ public final class Renderer
 	 */
 	public void clear(Color color)
 	{
-		for(int i = 0; i < this.pixels.length; i++)
-			this.pixels[i] = color.getColor();
+		Arrays.fill(this.pixels, color.getColor());
 	}
 
 	/**

@@ -1,8 +1,10 @@
+import java.awt.event.KeyEvent;
 import com.sci.engine.SciGame;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
 import com.sci.engine.graphics.Texture;
+import com.sci.engine.input.Keyboard;
 
 /**
  * SciEngine
@@ -13,6 +15,8 @@ import com.sci.engine.graphics.Texture;
 
 public class Test extends SciGame
 {
+	private int x = 25;
+	private int y = 25;
 	private Texture testTexture;
 
 	public Test(Display display)
@@ -29,13 +33,21 @@ public class Test extends SciGame
 	@Override
 	public void update()
 	{
-		System.out.println(this.getFPS());
+		if(Keyboard.isKeyDown(KeyEvent.VK_UP))
+			this.y--;
+		else if(Keyboard.isKeyDown(KeyEvent.VK_DOWN))
+			this.y++;
+
+		if(Keyboard.isKeyDown(KeyEvent.VK_LEFT))
+			this.x--;
+		else if(Keyboard.isKeyDown(KeyEvent.VK_RIGHT))
+			this.x++;
 	}
 
 	@Override
 	public void render(Renderer renderer)
 	{
-		renderer.render(10, 10, this.testTexture);
+		renderer.render(this.x, this.y, this.testTexture);
 	}
 
 	@Override

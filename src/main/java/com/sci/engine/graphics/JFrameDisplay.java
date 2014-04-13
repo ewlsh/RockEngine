@@ -6,6 +6,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
+import com.sci.engine.input.Keyboard;
+import com.sci.engine.input.Mouse;
 
 /**
  * SciEngine
@@ -59,6 +61,9 @@ public final class JFrameDisplay extends Display
 		this.canvas = new Canvas();
 		this.canvas.setSize(width, height);
 		this.frame.add(this.canvas);
+		this.frame.addKeyListener(Keyboard.getAdapter());
+		this.frame.addMouseListener(Mouse.getAdapter());
+		this.frame.addMouseMotionListener(Mouse.getMotionAdapter());
 	}
 
 	@Override
