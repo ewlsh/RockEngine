@@ -3,9 +3,9 @@ package com.sci.engine.gui.components;
 import java.awt.event.MouseEvent;
 import com.sci.engine.graphics.Color;
 import com.sci.engine.graphics.Renderer;
-import com.sci.engine.gui.ClickListener;
 import com.sci.engine.gui.Component;
 import com.sci.engine.gui.Listener;
+import com.sci.engine.gui.listeners.ClickListener;
 import com.sci.engine.input.Mouse;
 
 /**

@@ -1,4 +1,7 @@
-package com.sci.engine.gui;
+package com.sci.engine.gui.listeners;
+
+import com.sci.engine.gui.Component;
+import com.sci.engine.gui.Listener;
 
 /**
  * SciEngine
