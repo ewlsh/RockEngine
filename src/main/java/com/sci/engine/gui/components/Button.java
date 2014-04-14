@@ -24,6 +24,18 @@ public class Button extends Component
 	protected boolean clicked;
 	protected boolean lastClicked;
 
+	/**
+	 * Creates a new button at the specified location with the specified size
+	 * 
+	 * @param x
+	 *            (in pixels)
+	 * @param y
+	 *            (in pixels)
+	 * @param width
+	 *            (in pixels)
+	 * @param height
+	 *            (in pixels)
+	 */
 	public Button(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
@@ -64,5 +76,65 @@ public class Button extends Component
 			}
 		}
 		renderer.fillRect(this.x, this.y, this.width, this.height, color);
+	}
+
+	/**
+	 * Gets this {@link Button}'s background {@link Color}
+	 * 
+	 * @return {@link Color}
+	 */
+	public Color getBackground()
+	{
+		return background;
+	}
+
+	/**
+	 * Gets this {@link Button}'s background {@link Color}
+	 * 
+	 * @param {@link Color}
+	 */
+	public void setBackground(Color background)
+	{
+		this.background = background;
+	}
+
+	/**
+	 * Gets this {@link Button}'s hovered background {@link Color}
+	 * 
+	 * @return {@link Color}
+	 */
+	public Color getBackgroundHovered()
+	{
+		return backgroundHovered;
+	}
+
+	/**
+	 * Sets this {@link Button}'s hovered background {@link Color}
+	 * 
+	 * @param {@link Color}
+	 */
+	public void setBackgroundHovered(Color backgroundHovered)
+	{
+		this.backgroundHovered = backgroundHovered;
+	}
+
+	/**
+	 * Gets this {@link Button}'s clicked background {@link Color}
+	 * 
+	 * @return {@link Color}
+	 */
+	public Color getBackgroundClicked()
+	{
+		return backgroundClicked;
+	}
+
+	/**
+	 * Sets this {@link Button}'s clicked background {@link Color}
+	 * 
+	 * @param {@link Color}
+	 */
+	public void setBackgroundClicked(Color backgroundClicked)
+	{
+		this.backgroundClicked = backgroundClicked;
 	}
 }
