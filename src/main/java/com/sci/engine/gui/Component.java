@@ -1,5 +1,7 @@
 package com.sci.engine.gui;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.sci.engine.interfaces.Renderable;
 import com.sci.engine.interfaces.Updatable;
 
@@ -16,6 +18,7 @@ public abstract class Component implements Updatable, Renderable
 	protected int y;
 	protected int width;
 	protected int height;
+	protected List<Listener> listeners;
 
 	/**
 	 * Creates a new Component at the specified coordinates with the spcified
@@ -36,6 +39,27 @@ public abstract class Component implements Updatable, Renderable
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.listeners = new ArrayList<Listener>();
+	}
+
+	/**
+	 * Adds a {@link Listener} to this {@link Component}
+	 * 
+	 * @param {@link Listener}
+	 */
+	public void addListener(Listener listener)
+	{
+		this.listeners.add(listener);
+	}
+
+	/**
+	 * Removes a {@link Listener} from this {@link Component}
+	 * 
+	 * @param {@link Listener}
+	 */
+	public void removeListener(Listener listener)
+	{
+		this.listeners.remove(listener);
 	}
 
 	/**
@@ -63,7 +87,6 @@ public abstract class Component implements Updatable, Renderable
 	 * 
 	 * @return width (in pixels)
 	 */
-	@Override
 	public int getWidth()
 	{
 		return this.width;
@@ -74,7 +97,6 @@ public abstract class Component implements Updatable, Renderable
 	 * 
 	 * @return height (in pixels)
 	 */
-	@Override
 	public int getHeight()
 	{
 		return this.height;

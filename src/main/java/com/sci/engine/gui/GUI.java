@@ -67,6 +67,6 @@ public abstract class GUI implements Updatable, Renderable
 	public void render(int x, int y, Renderer renderer)
 	{
 		for(Component component : this.components)
-			component.render(component.getX(), component.getY(), renderer);
+			component.render(x, y, renderer);
 	}
 }

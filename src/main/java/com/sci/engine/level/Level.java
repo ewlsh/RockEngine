@@ -17,8 +17,6 @@ import com.sci.engine.interfaces.Updatable;
 public abstract class Level implements Updatable, Renderable
 {
 	protected List<Entity> entities;
-	protected int width;
-	protected int height;
 
 	/**
 	 * Creates a new level
@@ -28,10 +26,8 @@ public abstract class Level implements Updatable, Renderable
 	 * @param height
 	 *            (in pixels)
 	 */
-	public Level(int width, int height)
+	public Level()
 	{
-		this.width = width;
-		this.height = height;
 		this.entities = new ArrayList<Entity>();
 	}
 
@@ -43,28 +39,6 @@ public abstract class Level implements Updatable, Renderable
 	public void spawnEntity(Entity entity)
 	{
 		this.entities.add(entity);
-	}
-
-	/**
-	 * Gets the width of the level
-	 * 
-	 * @return width (in pixels)
-	 */
-	@Override
-	public int getWidth()
-	{
-		return this.width;
-	}
-
-	/**
-	 * Gets the height of the level
-	 * 
-	 * @return height (in pixels)
-	 */
-	@Override
-	public int getHeight()
-	{
-		return this.height;
 	}
 
 	/**

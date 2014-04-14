@@ -1,11 +1,9 @@
-import java.awt.event.KeyEvent;
 import com.sci.engine.SciGame;
-import com.sci.engine.graphics.Color;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
-import com.sci.engine.graphics.Texture;
-import com.sci.engine.input.Keyboard;
+import com.sci.engine.gui.GUI;
+import com.sci.engine.gui.components.Button;
 
 /**
  * SciEngine
@@ -16,9 +14,14 @@ import com.sci.engine.input.Keyboard;
 
 public class Test extends SciGame
 {
-	private int x = 25;
-	private int y = 25;
-	private Texture testTexture;
+	private GUI gui = new GUI()
+	{
+		@Override
+		public void render(int x, int y, Renderer renderer)
+		{
+			super.render(x, y, renderer);
+		}
+	};
 
 	public Test(Display display)
 	{
@@ -28,30 +31,19 @@ public class Test extends SciGame
 	@Override
 	public void init()
 	{
-		this.testTexture = Texture.load(Test.class.getResourceAsStream("test.png"));
+		this.gui.add(new Button(10, 10, 160, 40));
 	}
 
 	@Override
 	public void update()
 	{
-		if(Keyboard.isKeyDown(KeyEvent.VK_W))
-			this.y--;
-		else if(Keyboard.isKeyDown(KeyEvent.VK_S))
-			this.y++;
-
-		if(Keyboard.isKeyDown(KeyEvent.VK_A))
-			this.x--;
-		else if(Keyboard.isKeyDown(KeyEvent.VK_D))
-			this.x++;
+		this.gui.update();
 	}
 
 	@Override
 	public void render(Renderer renderer)
 	{
-		System.out.println(this.getFPS());
-
-		renderer.render(this.x, this.y, this.testTexture);
-		renderer.fillRect(100, 50, 10, 10, Color.RED);
+		this.gui.render(0, 0, renderer);
 	}
 
 	@Override
@@ -62,6 +54,6 @@ public class Test extends SciGame
 
 	public static void main(String[] args)
 	{
-		 new Test(new JFrameDisplay("Test", 800, 600)).start();
+		new Test(new JFrameDisplay("Test", 800, 600)).start();
 	}
 }

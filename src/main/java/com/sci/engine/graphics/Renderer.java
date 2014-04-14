@@ -71,7 +71,7 @@ public final class Renderer
 	}
 
 	/**
-	 * Renders a renderable object at the specified location
+	 * Renders the renderable object at the specified coordinates
 	 * 
 	 * @param x
 	 *            (in pixels)

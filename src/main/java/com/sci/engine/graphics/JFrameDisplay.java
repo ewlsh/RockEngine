@@ -62,8 +62,8 @@ public final class JFrameDisplay extends Display
 		this.canvas.setSize(width, height);
 		this.frame.add(this.canvas);
 		this.frame.addKeyListener(Keyboard.getAdapter());
-		this.frame.addMouseListener(Mouse.getAdapter());
-		this.frame.addMouseMotionListener(Mouse.getMotionAdapter());
+		this.canvas.addMouseListener(Mouse.getAdapter());
+		this.canvas.addMouseMotionListener(Mouse.getMotionAdapter());
 	}
 
 	@Override

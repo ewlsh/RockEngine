@@ -38,7 +38,6 @@ public final class Texture implements Renderable
 	 * 
 	 * @return the width (in pixels)
 	 */
-	@Override
 	public int getWidth()
 	{
 		return this.width;
@@ -49,7 +48,6 @@ public final class Texture implements Renderable
 	 * 
 	 * @return the height (in pixels)
 	 */
-	@Override
 	public int getHeight()
 	{
 		return this.height;
@@ -58,10 +56,6 @@ public final class Texture implements Renderable
 	/**
 	 * Renders this texture at the given x and y (in pixels)
 	 * 
-	 * @param x
-	 *            to render at (in pixels)
-	 * @param y
-	 *            to render at (in pixels)
 	 * @param {@link Renderer} to render with
 	 */
 	@Override

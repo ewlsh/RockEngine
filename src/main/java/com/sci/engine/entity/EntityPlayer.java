@@ -27,7 +27,6 @@ public class EntityPlayer extends EntityLiving
 	 * 
 	 * @return width (in pixels)
 	 */
-	@Override
 	public int getWidth()
 	{
 		if(this.texture == null)
@@ -40,7 +39,6 @@ public class EntityPlayer extends EntityLiving
 	 * 
 	 * @return height (in pixels)
 	 */
-	@Override
 	public int getHeight()
 	{
 		if(this.texture == null)

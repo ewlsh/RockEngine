@@ -12,20 +12,6 @@ import com.sci.engine.graphics.Renderer;
 public interface Renderable
 {
 	/**
-	 * Gets the width of this renderable object
-	 * 
-	 * @return the width (in pixels)
-	 */
-	public int getWidth();
-
-	/**
-	 * Gets the height of this renderable object
-	 * 
-	 * @return the height (in pixels)
-	 */
-	public int getHeight();
-
-	/**
 	 * Renders this object at the specified coordinates with the specified
 	 * renderer
 	 * 
