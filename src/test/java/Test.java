@@ -2,8 +2,10 @@ import com.sci.engine.SciGame;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
+import com.sci.engine.gui.Component;
 import com.sci.engine.gui.GUI;
 import com.sci.engine.gui.components.Button;
+import com.sci.engine.gui.listeners.ClickListener;
 
 /**
  * SciEngine
@@ -31,7 +33,16 @@ public class Test extends SciGame
 	@Override
 	public void init()
 	{
-		this.gui.add(new Button(10, 10, 160, 40));
+		Button testButton = new Button(10, 10, 160, 40);
+		this.gui.add(testButton);
+		testButton.addListener(new ClickListener()
+		{
+			@Override
+			public void onClicked(Component component)
+			{
+				System.out.println("click");
+			}
+		});
 	}
 
 	@Override

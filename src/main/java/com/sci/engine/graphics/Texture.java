@@ -54,6 +54,16 @@ public final class Texture implements Renderable
 	}
 
 	/**
+	 * Gets this texture's pixel array
+	 * 
+	 * @return int[]
+	 */
+	public int[] getPixels()
+	{
+		return this.pixels;
+	}
+
+	/**
 	 * Renders this texture at the given x and y (in pixels)
 	 * 
 	 * @param {@link Renderer} to render with
