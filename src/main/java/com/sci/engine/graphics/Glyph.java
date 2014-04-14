@@ -1,5 +1,7 @@
 package com.sci.engine.graphics;
 
+import com.sci.engine.interfaces.Renderable;
+
 /**
  * SciEngine
  * 
@@ -7,7 +9,7 @@ package com.sci.engine.graphics;
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
 
-public final class Glyph
+public final class Glyph implements Renderable
 {
 	protected final int width;
 	protected final int height;
@@ -57,5 +59,11 @@ public final class Glyph
 	public int[] getPixels()
 	{
 		return pixels;
+	}
+
+	@Override
+	public void render(int x, int y, Renderer renderer)
+	{
+		renderer.setPixels(x, y, this.width, this.height, this.pixels);
 	}
 }

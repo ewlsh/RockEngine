@@ -122,6 +122,17 @@ public final class Renderer
 	}
 
 	/**
+	 * Sets a pixel to the specified color
+	 * 
+	 * @param index
+	 * @param {@link Color}
+	 */
+	public void setPixel(int index, Color color)
+	{
+		this.pixels[index] = color.getColor();
+	}
+
+	/**
 	 * Copies the renderer pixels to the renderer image pixels
 	 */
 	public void copy()
