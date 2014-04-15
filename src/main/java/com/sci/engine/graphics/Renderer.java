@@ -64,10 +64,12 @@ public final class Renderer
 	 */
 	public void fillRect(int x, int y, int width, int height, Color color)
 	{
-		for(int j = 0; j < height; j++)
+		for(int i = 0; i < width; i++)
 		{
-			int start = x + (j + y) * this.width;
-			Arrays.fill(this.pixels, start, start + width, color.getColor());
+			for(int j = 0; j < height; j++)
+			{
+				this.setPixel(x + i, y + j, color);
+			}
 		}
 	}
 
@@ -138,7 +140,7 @@ public final class Renderer
 			{
 				int xx = x + i;
 				int yy = y + j;
-				this.pixels[xx + yy * this.width] = pixels[i + j * width];
+				this.setPixel(xx, yy, new Color(pixels[i + j * width]));
 			}
 		}
 	}
@@ -155,7 +157,7 @@ public final class Renderer
 	 */
 	public void setPixel(int x, int y, Color color)
 	{
-		this.pixels[x + y * this.width] = color.getColor();
+		this.setPixel(x + y * this.width, color);
 	}
 
 	/**
@@ -166,7 +168,12 @@ public final class Renderer
 	 */
 	public void setPixel(int index, Color color)
 	{
-		this.pixels[index] = color.getColor();
+		int n = color.getColor();
+		int o = this.pixels[index];
+		int alpha = (n << 24) & 0xff;
+		if(alpha < 255)
+			n = (o | n);
+		this.pixels[index] = n;
 	}
 
 	/**
