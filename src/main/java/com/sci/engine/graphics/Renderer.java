@@ -172,10 +172,16 @@ public final class Renderer
 			return;
 
 		int n = color.getColor();
+		int nAlpha = (n & 0xff000000) >> 24;
 		int o = this.pixels[index];
-		int alpha = (n << 24) & 0xff;
-		if(alpha < 255)
-			n = (o | n);
+		
+
+		if(nAlpha < 255)
+		{
+			//Cr = Cs + Cd * (1 - As)
+			n = n + o * (1 - nAlpha);
+		}
+
 		this.pixels[index] = n;
 	}
 
