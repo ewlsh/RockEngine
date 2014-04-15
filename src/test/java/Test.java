@@ -1,5 +1,10 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import com.sci.engine.SciGame;
 import com.sci.engine.graphics.Display;
+import com.sci.engine.graphics.Font;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
 import com.sci.engine.gui.Component;
@@ -54,6 +59,20 @@ public class Test extends SciGame
 	@Override
 	public void render(Renderer renderer)
 	{
+		if(renderer.getFont() == null)
+		{
+			try
+			{
+				InputStream stream = new FileInputStream(new File("src/main/resources/font.sf"));
+				renderer.setFont(Font.load(stream));
+			}
+			catch(Throwable t)
+			{
+				t.printStackTrace();
+			}
+		}
+
+		renderer.drawString(100, 100, "Test");
 		this.gui.render(0, 0, renderer);
 	}
 
@@ -63,7 +82,7 @@ public class Test extends SciGame
 
 	}
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		new Test(new JFrameDisplay("Test", 800, 600)).start();
 	}

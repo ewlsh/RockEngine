@@ -93,6 +93,7 @@ public final class Texture implements Renderable
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 		}
 		return null;
 	}

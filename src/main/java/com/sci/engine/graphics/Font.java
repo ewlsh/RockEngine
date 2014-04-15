@@ -1,5 +1,6 @@
 package com.sci.engine.graphics;
 
+import java.io.DataInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -147,14 +148,15 @@ public final class Font
 	{
 		try
 		{
-			int width = inputStream.read();
-			int height = inputStream.read();
+			DataInputStream din = new DataInputStream(inputStream);
+			int width = din.readInt();
+			int height = din.readInt();
 
 			List<Character> characters = new ArrayList<Character>();
 			while(true)
 			{
-				int c = inputStream.read();
-
+				int c = din.readInt();
+				
 				if(c == 0xDEADC0DE)
 					break;
 				else
@@ -170,6 +172,7 @@ public final class Font
 		}
 		catch(Throwable e)
 		{
+			e.printStackTrace();
 		}
 		return null;
 	}

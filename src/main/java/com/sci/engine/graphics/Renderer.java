@@ -14,6 +14,7 @@ import com.sci.engine.interfaces.Renderable;
 
 public final class Renderer
 {
+	private Font font;
 	private int width;
 	private int height;
 	private int[] pixels;
@@ -67,6 +68,25 @@ public final class Renderer
 		{
 			int start = x + (j + y) * this.width;
 			Arrays.fill(this.pixels, start, start + width, color.getColor());
+		}
+	}
+
+	/**
+	 * Draws a string at the specified location using the {@link Renderer}'s
+	 * {@link Font}
+	 * 
+	 * @param x
+	 *            (in pixels)
+	 * @param y
+	 *            (in pixels)
+	 * @param str
+	 */
+	public void drawString(int x, int y, String str)
+	{
+		for(int i = 0; i < str.length(); i++)
+		{
+			int xx = x + this.font.getCharacterWidth() * i;
+			this.font.getGlyph(str.charAt(i)).render(xx, y, this);
 		}
 	}
 
@@ -168,5 +188,25 @@ public final class Renderer
 	public BufferedImage getImage()
 	{
 		return this.image;
+	}
+
+	/**
+	 * Sets this {@link Renderer}'s {@link Font}
+	 * 
+	 * @param {@link Font}
+	 */
+	public void setFont(Font font)
+	{
+		this.font = font;
+	}
+
+	/**
+	 * Gets this {@link Renderer}'s {@link Font}
+	 * 
+	 * @return {@link Font}
+	 */
+	public Font getFont()
+	{
+		return this.font;
 	}
 }
