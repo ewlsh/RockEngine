@@ -1,12 +1,12 @@
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import com.sci.engine.SciGame;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.Font;
+import com.sci.engine.graphics.Font.CharCase;
 import com.sci.engine.graphics.JFrameDisplay;
 import com.sci.engine.graphics.Renderer;
+import com.sci.engine.graphics.Texture;
 import com.sci.engine.gui.Component;
 import com.sci.engine.gui.GUI;
 import com.sci.engine.gui.components.Button;
@@ -63,8 +63,13 @@ public class Test extends SciGame
 		{
 			try
 			{
-				InputStream stream = new FileInputStream(new File("src/main/resources/font.sf"));
-				renderer.setFont(Font.load(stream));
+				int width = 12;
+				int height = 16;
+				char[] characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ    0123456789-.!?/%$\\=*+,;:()&#\"' ".toCharArray();
+				Texture texture = Texture.load(new FileInputStream("src/main/resources/font.png"));
+				Font font = new Font(width, height, characters, texture);
+				font.setCharCase(CharCase.UPPER);
+				renderer.setFont(font);
 			}
 			catch(Throwable t)
 			{

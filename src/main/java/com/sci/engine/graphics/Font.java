@@ -1,10 +1,6 @@
 package com.sci.engine.graphics;
 
-import java.io.DataInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,15 +15,17 @@ public final class Font
 	protected Map<Character, Glyph> glyphs;
 	protected int characterWidth;
 	protected int characterHeight;
+	protected CharCase charCase;
 
 	/**
 	 * Creates a new font. Called by static factory
 	 */
-	private Font(int width, int height, char[] characters, Texture texture)
+	public Font(int width, int height, char[] characters, Texture texture)
 	{
 		this.characterWidth = width;
 		this.characterHeight = height;
 		this.glyphs = new HashMap<Character, Glyph>();
+		this.charCase = CharCase.BOTH;
 
 		int[] pixels = texture.getPixels();
 		int x = 0;
@@ -73,6 +71,26 @@ public final class Font
 	}
 
 	/**
+	 * Gets this {@link Font}'s character case mode
+	 * 
+	 * @return {@link CharCase}
+	 */
+	public CharCase getCharCase()
+	{
+		return charCase;
+	}
+
+	/**
+	 * Sets this {@link Font}'s character case mode
+	 * 
+	 * @param {@link CharCase}
+	 */
+	public void setCharCase(CharCase charCase)
+	{
+		this.charCase = charCase;
+	}
+
+	/**
 	 * Get the texture to render for this character
 	 * 
 	 * @param character
@@ -114,66 +132,8 @@ public final class Font
 		return str.length() * this.characterWidth;
 	}
 
-	/**
-	 * Loads a {@link Font} from an {@link InputStream}.
-	 * 
-	 * Data Format:
-	 * <table>
-	 * <tr>
-	 * <th>Index</th>
-	 * <th>Data</th>
-	 * </tr>
-	 * <tr>
-	 * <td>0</td>
-	 * <td>Width</td>
-	 * </tr>
-	 * <tr>
-	 * <td>1</td>
-	 * <td>Height</td>
-	 * </tr>
-	 * <tr>
-	 * <td>2... n-1</td>
-	 * <td>Characters</td>
-	 * </tr>
-	 * <tr>
-	 * <td>n...</td>
-	 * <td>PNG Texture</td>
-	 * </tr>
-	 * </table>
-	 * 
-	 * @param inputStream
-	 * @return
-	 */
-	public static Font load(InputStream inputStream)
+	public static enum CharCase
 	{
-		try
-		{
-			DataInputStream din = new DataInputStream(inputStream);
-			int width = din.readInt();
-			int height = din.readInt();
-
-			List<Character> characters = new ArrayList<Character>();
-			while(true)
-			{
-				int c = din.readInt();
-				
-				if(c == 0xDEADC0DE)
-					break;
-				else
-					characters.add((char) c);
-			}
-
-			char[] charArray = new char[characters.size()];
-			for(int i = 0; i < characters.size(); i++)
-				charArray[i] = characters.get(i);
-
-			Texture texture = Texture.load(inputStream);
-			return new Font(width, height, charArray, texture);
-		}
-		catch(Throwable e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		UPPER, BOTH, LOWER;
 	}
 }

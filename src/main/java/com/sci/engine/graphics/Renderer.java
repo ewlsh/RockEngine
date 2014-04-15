@@ -83,10 +83,24 @@ public final class Renderer
 	 */
 	public void drawString(int x, int y, String str)
 	{
+		switch (this.font.getCharCase())
+		{
+		case UPPER:
+			str = str.toUpperCase();
+			break;
+		case BOTH:
+			break;
+		case LOWER:
+			str = str.toLowerCase();
+			break;
+		}
+
 		for(int i = 0; i < str.length(); i++)
 		{
 			int xx = x + this.font.getCharacterWidth() * i;
-			this.font.getGlyph(str.charAt(i)).render(xx, y, this);
+			Glyph glyph = this.font.getGlyph(str.charAt(i));
+			if(glyph != null)
+				glyph.render(xx, y, this);
 		}
 	}
 
