@@ -80,8 +80,8 @@ public class Test extends SciGame
 
 		renderer.drawString(100, 100, "SWAGMASTER420BLAZINIT");
 		this.gui.render(0, 0, renderer);
-		
-		renderer.fillRect(200,  200,  75,  75,  new Color(255, 0, 0, 100));
+
+		renderer.fillRect(200, 200, 75, 75, new Color(255, 0, 0, 100));
 		renderer.fillRect(225, 225, 25, 25, new Color(0, 0, 255, 255));
 	}
 

@@ -168,6 +168,9 @@ public final class Renderer
 	 */
 	public void setPixel(int index, Color color)
 	{
+		if(index < 0 || index >= this.pixels.length)
+			return;
+
 		int n = color.getColor();
 		int o = this.pixels[index];
 		int alpha = (n << 24) & 0xff;
