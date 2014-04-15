@@ -42,7 +42,7 @@ public final class Font
 			{
 				for(int j = 0; j < this.characterHeight; j++)
 				{
-					int pIndex = (x * this.characterWidth + i) + (y * this.characterWidth + i) * texture.getWidth();
+					int pIndex = (x * this.characterWidth + i) + (y * this.characterHeight + i) * texture.getWidth();
 					int gIndex = i + j * this.characterWidth;
 					glyphPixels[gIndex] = pixels[pIndex];
 				}
