@@ -26,7 +26,7 @@ public final class Renderer
 		this.width = width;
 		this.height = height;
 		this.pixels = new int[this.width * this.height];
-		this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
+		this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_ARGB);
 		this.imagePixels = ((DataBufferInt) this.image.getRaster().getDataBuffer()).getData();
 		this.image.setAccelerationPriority(1f);
 	}
@@ -97,8 +97,11 @@ public final class Renderer
 
 		for(int i = 0; i < str.length(); i++)
 		{
+			char c = str.charAt(i);
+			if(c < 0)
+				continue;
 			int xx = x + this.font.getCharacterWidth() * i;
-			Glyph glyph = this.font.getGlyph(str.charAt(i));
+			Glyph glyph = this.font.getGlyph(c);
 			if(glyph != null)
 				glyph.render(xx, y, this);
 		}

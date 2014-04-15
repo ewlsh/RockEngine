@@ -64,6 +64,15 @@ public final class Glyph implements Renderable
 	@Override
 	public void render(int x, int y, Renderer renderer)
 	{
-		renderer.setPixels(x, y, this.width, this.height, this.pixels);
+		for(int i = 0; i < this.width; i++)
+		{
+			for(int j = 0; j < this.height; j++)
+			{
+				int xx = x + i;
+				int yy = y + j;
+				if(this.pixels[i + j * this.width] != -65536)
+					renderer.setPixel(xx, yy, new Color(this.pixels[i + j * this.width]));
+			}
+		}
 	}
 }

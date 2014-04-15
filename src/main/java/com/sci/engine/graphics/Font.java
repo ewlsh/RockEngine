@@ -30,8 +30,6 @@ public final class Font
 		int[] pixels = texture.getPixels();
 		int x = 0;
 		int y = 0;
-		int xMax = texture.getWidth() / this.characterWidth;
-		int yMax = texture.getHeight() / this.characterHeight;
 		int charIndex = 0;
 
 		while(charIndex < characters.length)
@@ -42,7 +40,7 @@ public final class Font
 			{
 				for(int j = 0; j < this.characterHeight; j++)
 				{
-					int pIndex = (x * this.characterWidth + i) + (y * this.characterHeight + i) * texture.getWidth();
+					int pIndex = (x + i) + (y + j) * texture.getWidth();
 					int gIndex = i + j * this.characterWidth;
 					glyphPixels[gIndex] = pixels[pIndex];
 				}
@@ -51,16 +49,16 @@ public final class Font
 			this.glyphs.put(characters[charIndex], new Glyph(this.characterWidth, this.characterHeight, glyphPixels));
 
 			charIndex++;
-			if(x < xMax)
+			if(x < texture.getWidth() - this.characterWidth)
 			{
-				x++;
+				x += this.characterWidth;
 			}
 			else
 			{
 				x = 0;
-				if(y < yMax)
+				if(y < texture.getHeight() - this.characterHeight)
 				{
-					y++;
+					y += this.characterHeight;
 				}
 				else
 				{

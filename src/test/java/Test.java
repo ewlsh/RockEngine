@@ -63,9 +63,9 @@ public class Test extends SciGame
 		{
 			try
 			{
-				int width = 12;
+				int width = 16;
 				int height = 16;
-				char[] characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ    0123456789-.!?/%$\\=*+,;:()&#\"' ".toCharArray();
+				char[] characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ    0123456789-.?/%$\\=*+,;:()&#\"'".toCharArray();
 				Texture texture = Texture.load(new FileInputStream("src/main/resources/font.png"));
 				Font font = new Font(width, height, characters, texture);
 				font.setCharCase(CharCase.UPPER);
@@ -77,7 +77,7 @@ public class Test extends SciGame
 			}
 		}
 
-		renderer.drawString(100, 100, "Test");
+		renderer.drawString(100, 100, "SWAGMASTER420BLAZINIT");
 		this.gui.render(0, 0, renderer);
 	}
 
