@@ -64,9 +64,9 @@ public abstract class GUI implements Updatable, Renderable
 	 * </ul>
 	 */
 	@Override
-	public void render(int x, int y, Renderer renderer)
+	public void render(Renderer renderer, int x, int y)
 	{
 		for(Component component : this.components)
-			component.render(x, y, renderer);
+			component.render(renderer, x, y);
 	}
 }

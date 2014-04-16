@@ -1,5 +1,6 @@
 package com.sci.engine.entity;
 
+import com.sci.engine.graphics.Renderer;
 import com.sci.engine.interfaces.Renderable;
 import com.sci.engine.interfaces.Updatable;
 import com.sci.engine.level.Level;
@@ -104,5 +105,11 @@ public abstract class Entity implements Updatable, Renderable
 	public boolean isMarkedForRemoval()
 	{
 		return this.remove;
+	}
+	
+	@Override
+	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
+	{
+		
 	}
 }

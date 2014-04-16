@@ -55,10 +55,16 @@ public abstract class Level implements Updatable, Renderable
 	 * @param {@link Renderer}
 	 */
 	@Override
-	public void render(int x, int y, Renderer renderer)
+	public void render(Renderer renderer, int x, int y)
 	{
 		for(Entity entity : this.entities)
-			entity.render(entity.getX(), entity.getY(), renderer);
+			entity.render(renderer, entity.getX(), entity.getY());
+	}
+
+	@Override
+	public final void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
+	{
+		throw new UnsupportedOperationException();
 	}
 
 	/**

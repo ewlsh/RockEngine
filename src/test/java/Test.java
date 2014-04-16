@@ -1,7 +1,6 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import com.sci.engine.SciGame;
-import com.sci.engine.graphics.Color;
 import com.sci.engine.graphics.Display;
 import com.sci.engine.graphics.Font;
 import com.sci.engine.graphics.Font.CharCase;
@@ -25,11 +24,19 @@ public class Test extends SciGame
 	private GUI gui = new GUI()
 	{
 		@Override
-		public void render(int x, int y, Renderer renderer)
+		public void render(Renderer renderer, int x, int y)
 		{
-			super.render(x, y, renderer);
+			super.render(renderer, x, y);
+		}
+
+		@Override
+		public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
+		{
 		}
 	};
+
+	private int angle;
+	private Texture fontTexture;
 
 	public Test(Display display)
 	{
@@ -67,8 +74,8 @@ public class Test extends SciGame
 				int width = 16;
 				int height = 16;
 				char[] characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ    0123456789-.!?/%$\\=*+,;:()&#\"'".toCharArray();
-				Texture texture = Texture.load(new FileInputStream("src/main/resources/font.png"));
-				Font font = new Font(width, height, characters, texture);
+				fontTexture = Texture.load(new FileInputStream("src/main/resources/font.png"));
+				Font font = new Font(width, height, characters, fontTexture);
 				font.setCharCase(CharCase.UPPER);
 				renderer.setFont(font);
 			}
@@ -79,12 +86,13 @@ public class Test extends SciGame
 		}
 
 		renderer.drawString(100, 100, "LOL SWAGMASTER420BLAZINIT");
-		this.gui.render(0, 0, renderer);
-		
+		this.gui.render(renderer, 0, 0);
+
 		renderer.drawString(300, 10, "FPS: " + this.getFPS());
 
-		renderer.fillRect(200, 200, 75, 75, new Color(255, 0, 0, 100));
-		renderer.fillRect(225, 225, 25, 25, new Color(0, 0, 255, 255));
+		angle++;
+
+		renderer.renderRotated(250, 250,  fontTexture.getWidth() / 2,  fontTexture.getHeight() / 2, fontTexture, angle);
 	}
 
 	@Override

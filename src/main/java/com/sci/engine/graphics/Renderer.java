@@ -21,6 +21,12 @@ public final class Renderer
 	private int[] imagePixels;
 	private BufferedImage image;
 
+	/**
+	 * Creates a new Renderer with the specified width and height
+	 * 
+	 * @param width
+	 * @param height
+	 */
 	public Renderer(int width, int height)
 	{
 		this.width = width;
@@ -105,7 +111,7 @@ public final class Renderer
 			int xx = x + this.font.getCharacterWidth() * i;
 			Glyph glyph = this.font.getGlyph(c);
 			if(glyph != null)
-				glyph.render(xx, y, this);
+				glyph.render(this, xx, y);
 		}
 	}
 
@@ -120,7 +126,28 @@ public final class Renderer
 	 */
 	public void render(int x, int y, Renderable renderable)
 	{
-		renderable.render(x, y, this);
+		renderable.render(this, x, y);
+	}
+
+	/**
+	 * Renders the renderable object at the specified coordinates rotated around
+	 * the specified point at the specified angle
+	 * 
+	 * @param x
+	 *            (in pixels)
+	 * @param y
+	 *            (in pixels)
+	 * @param rotX
+	 *            (in pixels)
+	 * @param rotY
+	 *            (in pixels)
+	 * @param {@link Renderable}
+	 * @param angle
+	 *            (in degrees)
+	 */
+	public void renderRotated(int x, int y, int rotX, int rotY, Renderable renderable, int angle)
+	{
+		renderable.renderRotated(this, x, y, rotX, rotY, angle);
 	}
 
 	/**
@@ -157,28 +184,19 @@ public final class Renderer
 	 */
 	public void setPixel(int x, int y, Color color)
 	{
-		this.setPixel(x + y * this.width, color);
-	}
-
-	/**
-	 * Sets a pixel to the specified color
-	 * 
-	 * @param index
-	 * @param {@link Color}
-	 */
-	public void setPixel(int index, Color color)
-	{
-		if(index < 0 || index >= this.pixels.length)
+		if(x < 0 || x >= this.width)
+			return;
+		if(y < 0 || y >= this.height)
 			return;
 
 		int n = color.getColor();
 		int nAlpha = (n & 0xff000000) >> 24;
-		int o = this.pixels[index];
-		
+		int o = this.pixels[x + y * this.width];
+
 		if(nAlpha < 255)
 			n = n + o * (1 - nAlpha);
 
-		this.pixels[index] = n;
+		this.pixels[x + y * this.width] = n;
 	}
 
 	/**

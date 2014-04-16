@@ -12,14 +12,32 @@ import com.sci.engine.graphics.Renderer;
 public interface Renderable
 {
 	/**
-	 * Renders this object at the specified coordinates with the specified
-	 * renderer
+	 * Renders this object at the specified coordinates
 	 * 
+	 * @param {@link Renderer}
 	 * @param x
 	 *            position (in pixels)
 	 * @param y
 	 *            position (in pixels)
-	 * @param renderer
 	 */
-	public void render(int x, int y, Renderer renderer);
+	public void render(Renderer renderer, int x, int y);
+
+	/**
+	 * Renders this object at the specified coordinates rotated at a certain
+	 * angle
+	 * 
+	 * @param {@link Renderer}
+	 * @param x
+	 *            position (in pixels)
+	 * @param y
+	 *            position (in pixels)
+	 * @param rotX
+	 *            position (in pixels)
+	 * @param rotY
+	 *            position (in pixels)
+	 * @param angle
+	 *            (in degrees)
+	 * @throws {@link UnsupportedOperationException}
+	 */
+	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle);
 }

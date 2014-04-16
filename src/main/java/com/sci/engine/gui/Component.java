@@ -2,6 +2,7 @@ package com.sci.engine.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.sci.engine.graphics.Renderer;
 import com.sci.engine.interfaces.Renderable;
 import com.sci.engine.interfaces.Updatable;
 
@@ -144,5 +145,11 @@ public abstract class Component implements Updatable, Renderable
 	public void setHeight(int height)
 	{
 		this.height = height;
+	}
+	
+	@Override
+	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
+	{	
+		throw new UnsupportedOperationException();
 	}
 }

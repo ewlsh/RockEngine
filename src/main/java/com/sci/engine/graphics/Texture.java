@@ -1,5 +1,7 @@
 package com.sci.engine.graphics;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
@@ -17,6 +19,7 @@ public final class Texture implements Renderable
 	private int width;
 	private int height;
 	private int[] pixels;
+	private BufferedImage image;
 
 	/**
 	 * Creates a new texture with the specified width, height, and pixels.
@@ -26,11 +29,12 @@ public final class Texture implements Renderable
 	 * @param height
 	 * @param pixels
 	 */
-	private Texture(int width, int height, int[] pixels)
+	private Texture(int width, int height, int[] pixels, BufferedImage image)
 	{
 		this.width = width;
 		this.height = height;
 		this.pixels = pixels;
+		this.image = image;
 	}
 
 	/**
@@ -67,11 +71,42 @@ public final class Texture implements Renderable
 	 * Renders this texture at the given x and y (in pixels)
 	 * 
 	 * @param {@link Renderer} to render with
+	 * @param x
+	 *            (in pixels)
+	 * @param y
+	 *            (in pixels)
 	 */
 	@Override
-	public void render(int x, int y, Renderer renderer)
+	public void render(Renderer renderer, int x, int y)
 	{
 		renderer.setPixels(x, y, this.width, this.height, this.pixels);
+	}
+
+	/**
+	 * Renders a rotated version of this texture at x and y (in pixels)
+	 * 
+	 * @param {@link Renderer}
+	 * @param x
+	 *            (in pixels)
+	 * @param y
+	 *            (in pixels)
+	 * @param rotX
+	 *            (in pixels)
+	 * @param rotY
+	 *            (in pixels)
+	 * @param angle
+	 *            (in degrees)
+	 */
+	@Override
+	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
+	{
+		double radians = Math.toRadians(angle);
+		AffineTransform transform = AffineTransform.getRotateInstance(radians, rotX, rotY);
+		AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
+		BufferedImage image = op.filter(this.image, null);
+		int[] pixels = new int[image.getWidth() * image.getHeight()];
+		image.getRGB(0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());
+		renderer.setPixels(x, y, image.getWidth(), image.getHeight(), pixels);
 	}
 
 	/**
@@ -89,7 +124,7 @@ public final class Texture implements Renderable
 			int height = image.getHeight();
 			int[] pixels = new int[width * height];
 			image.getRGB(0, 0, width, height, pixels, 0, width);
-			return new Texture(width, height, pixels);
+			return new Texture(width, height, pixels, image);
 		}
 		catch(Exception e)
 		{

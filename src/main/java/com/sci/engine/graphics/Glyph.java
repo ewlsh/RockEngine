@@ -62,7 +62,7 @@ public final class Glyph implements Renderable
 	}
 
 	@Override
-	public void render(int x, int y, Renderer renderer)
+	public void render(Renderer renderer, int x, int y)
 	{
 		for(int i = 0; i < this.width; i++)
 		{
@@ -74,5 +74,11 @@ public final class Glyph implements Renderable
 					renderer.setPixel(xx, yy, new Color(this.pixels[i + j * this.width]));
 			}
 		}
+	}
+
+	@Override
+	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
+	{
+		throw new UnsupportedOperationException();
 	}
 }

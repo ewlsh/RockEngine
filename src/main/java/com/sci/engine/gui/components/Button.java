@@ -54,7 +54,7 @@ public class Button extends Component
 	}
 
 	@Override
-	public void render(int x, int y, Renderer renderer)
+	public void render(Renderer renderer, int x, int y)
 	{
 		Color color = this.background;
 		if(this.hovered)

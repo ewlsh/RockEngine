@@ -49,14 +49,14 @@ public class EntityPlayer extends EntityLiving
 	/**
 	 * Renders the player at the specified location
 	 * 
+	 * @param {@link Renderer}
 	 * @param x
 	 *            (in pixels)
 	 * @param y
 	 *            (in pixels)
-	 * @param {@link Renderer}
 	 */
 	@Override
-	public void render(int x, int y, Renderer renderer)
+	public void render(Renderer renderer, int x, int y)
 	{
 		renderer.render(x, y, this.texture);
 	}
