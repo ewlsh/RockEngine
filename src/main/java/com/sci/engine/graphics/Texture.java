@@ -100,6 +100,11 @@ public final class Texture implements Renderable
 	@Override
 	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle)
 	{
+		if(angle == 0)
+		{
+			renderer.setPixels(x, y, this.width, this.height, this.pixels);
+			return;
+		}
 		double radians = Math.toRadians(angle);
 		AffineTransform transform = AffineTransform.getRotateInstance(radians, rotX, rotY);
 		AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);

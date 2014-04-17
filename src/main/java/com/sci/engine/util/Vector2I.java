@@ -13,6 +13,13 @@ public final class Vector2I
 	private int y;
 
 	/**
+	 * Creates a new {@link Vector2I} at (0,0)
+	 */
+	public Vector2I()
+	{
+	}
+
+	/**
 	 * Creates a new {@link Vector2I}
 	 * 
 	 * @param x
