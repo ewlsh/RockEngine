@@ -9,6 +9,12 @@ import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * SciEngine: RockEngine Fork
+ *
+ * @author rockon999
+ * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
+ */
 public class NetworkClient extends Thread {
 
     private InetAddress ipAddress;

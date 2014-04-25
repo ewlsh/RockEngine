@@ -5,8 +5,10 @@ import com.sci.engine.util.AABB;
 import com.sci.engine.util.Vector2I;
 
 /**
+ * SciEngine: RockEngine Fork
  *
- * @author evan
+ * @author rockon999
+ * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
 public class Entity implements Updatable {
 

@@ -1,12 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rock.network;
 
 /**
+ * SciEngine: RockEngine Fork
  *
- * @author evan
+ * @author rockon999
+ * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
 public abstract class Packet {
 
