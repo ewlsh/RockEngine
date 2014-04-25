@@ -24,7 +24,7 @@ public final class JFrameDisplay extends Display
 	private Graphics graphics;
 
 	/**
-	 * Creates a new JFrame dispaly with the specified width and height
+	 * Creates a new JFrame display with the specified width and height
 	 * 
 	 * @param width
 	 * @param height
@@ -61,9 +61,12 @@ public final class JFrameDisplay extends Display
 		this.canvas = new Canvas();
 		this.canvas.setSize(width, height);
 		this.frame.add(this.canvas);
+                this.canvas.addKeyListener(Keyboard.getAdapter());
 		this.frame.addKeyListener(Keyboard.getAdapter());
 		this.canvas.addMouseListener(Mouse.getAdapter());
 		this.canvas.addMouseMotionListener(Mouse.getMotionAdapter());
+                this.frame.addMouseListener(Mouse.getAdapter());
+		this.frame.addMouseMotionListener(Mouse.getMotionAdapter());
 	}
 
 	@Override

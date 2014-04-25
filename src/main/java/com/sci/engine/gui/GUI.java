@@ -19,7 +19,7 @@ public abstract class GUI implements Updatable, Renderable
 
 	public GUI()
 	{
-		this.components = new ArrayList<Component>();
+		this.components = new ArrayList<>();
 	}
 
 	/**

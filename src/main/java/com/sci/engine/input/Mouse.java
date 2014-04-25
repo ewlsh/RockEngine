@@ -6,95 +6,86 @@ import java.awt.event.MouseMotionAdapter;
 
 /**
  * SciEngine
- * 
+ *
  * @author sci4me
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
+public final class Mouse {
 
-public final class Mouse
-{
-	private static int mouseX;
-	private static int mouseY;
+    private static int mouseX;
+    private static int mouseY;
+    private static boolean[] buttons = new boolean[64];
+    private static MouseAdapter adapter = new MouseAdapter() {
+        @Override
+        public void mousePressed(MouseEvent evt) {
+            Mouse.buttons[evt.getButton()] = true;
+        }
 
-	private static boolean[] buttons = new boolean[64];
+        @Override
+        public void mouseReleased(MouseEvent evt) {
+            Mouse.buttons[evt.getButton()] = false;
+        }
+    };
+    private static MouseMotionAdapter motionAdapter = new MouseMotionAdapter() {
+        @Override
+        public void mouseMoved(MouseEvent evt) {
+            Mouse.mouseX = evt.getX();
+            Mouse.mouseY = evt.getY();
+        }
 
-	private static MouseAdapter adapter = new MouseAdapter()
-	{
-		@Override
-		public void mousePressed(MouseEvent evt)
-		{
-			Mouse.buttons[evt.getButton()] = true;
-		}
+        @Override
+        public void mouseDragged(MouseEvent evt) {
+            Mouse.mouseX = evt.getX();
+            Mouse.mouseY = evt.getY();
+        }
+    };
 
-		@Override
-		public void mouseReleased(MouseEvent evt)
-		{
-			Mouse.buttons[evt.getButton()] = false;
-		}
-	};
+    private Mouse() {
+    }
 
-	private static MouseMotionAdapter motionAdapter = new MouseMotionAdapter()
-	{
-		@Override
-		public void mouseMoved(MouseEvent evt)
-		{
-			Mouse.mouseX = evt.getX();
-			Mouse.mouseY = evt.getY();
-		}
-	};
+    /**
+     * Gets the mouse's x position
+     *
+     * @return
+     */
+    public static int getX() {
+        return Mouse.mouseX;
+    }
 
-	private Mouse()
-	{
-	}
+    /**
+     * Gets the mouse's y position
+     *
+     * @return
+     */
+    public static int getY() {
+        return Mouse.mouseY;
+    }
 
-	/**
-	 * Gets the mouse's x position
-	 * 
-	 * @return
-	 */
-	public static int getX()
-	{
-		return Mouse.mouseX;
-	}
+    /**
+     * Check if a mouse button is being held down
+     *
+     * @param buttonId
+     * @return
+     */
+    public static boolean isButtonDown(int buttonId) {
+        return Mouse.buttons[buttonId];
+    }
 
-	/**
-	 * Gets the mouse's y position
-	 * 
-	 * @return
-	 */
-	public static int getY()
-	{
-		return Mouse.mouseY;
-	}
+    /**
+     * Gets the {@link MouseAdapter}
+     *
+     * @return
+     */
+    public static MouseAdapter getAdapter() {
+        return Mouse.adapter;
+    }
 
-	/**
-	 * Check if a mouse button is being held down
-	 * 
-	 * @param buttonId
-	 * @return
-	 */
-	public static boolean isButtonDown(int buttonId)
-	{
-		return Mouse.buttons[buttonId];
-	}
-
-	/**
-	 * Gets the {@link MouseAdapter}
-	 * 
-	 * @return
-	 */
-	public static MouseAdapter getAdapter()
-	{
-		return Mouse.adapter;
-	}
-
-	/**
-	 * Gets the {@link MouseMotionAdapter}
-	 * 
-	 * @return
-	 */
-	public static MouseMotionAdapter getMotionAdapter()
-	{
-		return Mouse.motionAdapter;
-	}
+    /**
+     * Gets the {@link MouseMotionAdapter}
+     *
+     * @return
+     */
+    public static MouseMotionAdapter getMotionAdapter() {
+        return Mouse.motionAdapter;
+    }
 }

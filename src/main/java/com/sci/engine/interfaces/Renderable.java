@@ -4,40 +4,18 @@ import com.sci.engine.graphics.Renderer;
 
 /**
  * SciEngine
- * 
+ *
  * @author sci4me
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
+public interface Renderable {
 
-public interface Renderable
-{
-	/**
-	 * Renders this object at the specified coordinates
-	 * 
-	 * @param {@link Renderer}
-	 * @param x
-	 *            position (in pixels)
-	 * @param y
-	 *            position (in pixels)
-	 */
-	public void render(Renderer renderer, int x, int y);
-
-	/**
-	 * Renders this object at the specified coordinates rotated at a certain
-	 * angle
-	 * 
-	 * @param {@link Renderer}
-	 * @param x
-	 *            position (in pixels)
-	 * @param y
-	 *            position (in pixels)
-	 * @param rotX
-	 *            position (in pixels)
-	 * @param rotY
-	 *            position (in pixels)
-	 * @param angle
-	 *            (in degrees)
-	 * @throws {@link UnsupportedOperationException}
-	 */
-	public void renderRotated(Renderer renderer, int x, int y, int rotX, int rotY, int angle);
+    /**
+     * Renders this object at the specified coordinates
+     *
+     * @param {@link Renderer}
+     * @param x position (in pixels)
+     * @param y position (in pixels)
+     */
+    public void render(Renderer renderer, int x, int y);
 }

@@ -4,11 +4,13 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 import com.sci.engine.interfaces.Renderable;
+import com.sci.engine.interfaces.Rotatable;
 
 /**
- * SciEngine
- * 
+ * SciEngine: RockEngine Fork
+ *
  * @author sci4me
+ * @author rockon999
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
 
@@ -130,7 +132,7 @@ public final class Renderer
 	}
 
 	/**
-	 * Renders the renderable object at the specified coordinates rotated around
+	 * Renders the rotatable object at the specified coordinates rotated around
 	 * the specified point at the specified angle
 	 * 
 	 * @param x
@@ -145,9 +147,9 @@ public final class Renderer
 	 * @param angle
 	 *            (in degrees)
 	 */
-	public void renderRotated(int x, int y, int rotX, int rotY, Renderable renderable, int angle)
+	public void rotatedRender(int x, int y, int rotX, int rotY, int angle, Rotatable rotatable)
 	{
-		renderable.renderRotated(this, x, y, rotX, rotY, angle);
+		rotatable.rotatedRender(this, x, y, rotX, rotY, angle);
 	}
 
 	/**
@@ -193,7 +195,7 @@ public final class Renderer
 		int nAlpha = (n & 0xff000000) >> 24;
 		int o = this.pixels[x + y * this.width];
 
-		if(nAlpha < 255)
+		if(nAlpha == 0)
 			n = n + o * (1 - nAlpha);
 
 		this.pixels[x + y * this.width] = n;
