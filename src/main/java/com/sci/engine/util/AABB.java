@@ -1,9 +1,10 @@
 package com.sci.engine.util;
 
 /**
- * SciEngine
+ * SciEngine: RockEngine Fork
  *
  * @author sci4me
+ * @author rockon999
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
 public final class AABB {

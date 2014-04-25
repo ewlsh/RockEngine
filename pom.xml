@@ -4,7 +4,7 @@
 	<groupId>com.sci</groupId>
 	<artifactId>gameEngine</artifactId>
 	<packaging>jar</packaging>
-	<name>SciEngine</name>
+	<name>RockEngine</name>
 	<version>0.0.2</version>    
 	
 	<build>
